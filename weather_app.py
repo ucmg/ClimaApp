@@ -105,7 +105,7 @@ def draw_bar_chart():
     label_xaxis(days)
     write_temperatures_on_bar_chart(bar_min, bar_max)
     st.pyplot()
-    st.title("Minimum and Maximum Temperatures")
+    st.title("Temperaturas Máximas e Mínimas")
     for i in range (0,5):
         st.write("### ",temp_min[i],degree_sign,' --- ',temp_max[i],degree_sign)
 
@@ -114,48 +114,48 @@ def draw_line_chart():
     bar_min, bar_max = plot_temperatures_line(days, temp_min, temp_max)
     label_xaxis(days)
     st.pyplot()
-    st.title("Minimum and Maximum Temperatures")
+    st.title("Temperaturas Máximas e Mínimas")
     for i in range (0,5):
         st.write("### ",temp_min[i],degree_sign,' --- ',temp_max[i],degree_sign)
 
 def other_weather_updates():
     forecaster = mgr.forecast_at_place(place, '3h')
-    st.title("Impending Temperature Changes :")
+    st.title("Mudanças de Temperatura Iminentes :")
     if forecaster.will_have_fog():
-        st.write("### FOG Alert!")
+        st.write("### Alerta de nevoeiro!")
     if forecaster.will_have_rain():
-        st.write("### Rain Alert")
+        st.write("### Alerta de chuva!")
     if forecaster.will_have_storm():
-        st.write("### Storm Alert!")
+        st.write("### Alerta de tempestade!")
     if forecaster.will_have_snow():
-        st.write("### Snow Alert!")
+        st.write("### Alerta de neve!")
     if forecaster.will_have_tornado():
-        st.write("### Tornado Alert!")
+        st.write("### Alerta de tornado!")
     if forecaster.will_have_hurricane():
-        st.write("### Hurricane Alert!")
+        st.write("### Alerta de furacão!")
     if forecaster.will_have_clouds():
-        st.write("### Cloudy Skies")    
+        st.write("### Céu nublado")    
     if forecaster.will_have_clear():
-        st.write("### Clear Weather!")
+        st.write("### Tempo limpo!")
 
 def cloud_and_wind():
     obs=mgr.weather_at_place(place)
     weather=obs.weather
     cloud_cov=weather.clouds
     winds=weather.wind()['speed']
-    st.title("Cloud coverage and wind speed")
-    st.write('### The current cloud coverage for',place,'is',cloud_cov,'%')
-    st.write('### The current wind speed for',place, 'is',winds,'mph')
+    st.title("Cobertura de nuvens e velocidade do vento")
+    st.write('### A cobertura de nuvem atual para',place,'é',cloud_cov,'%')
+    st.write('### A velocidade atual do vento para',place,'é',winds,'mph')
 
 def sunrise_and_sunset():
     obs=mgr.weather_at_place(place)
     weather=obs.weather
-    st.title("Sunrise and Sunset Times :")
-    india = pytz.timezone("Asia/Kolkata")
+    st.title("Horas do nascer e pôr do sol :")
+    Brazil = pytz.timezone("America/Sao_Paulo")
     ss=weather.sunset_time(timeformat='iso')
     sr=weather.sunrise_time(timeformat='iso')  
-    st.write("### Sunrise time in",place,"is",sr)
-    st.write("### Sunset time in",place,"is",ss)
+    st.write("### Hora do nascer do sol em",place,"é",sr)
+    st.write("### Hora do pôr do sol em",place,"é",ss)
 
 def updates():
     other_weather_updates()
@@ -165,7 +165,7 @@ def updates():
 
 if __name__ == '__main__':
     
-    if st.button("SUBMIT"):
+    if st.button("ENVIAR"):
         if g_type == 'Line Graph':
             draw_line_chart()    
         else:
