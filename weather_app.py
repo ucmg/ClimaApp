@@ -6,27 +6,27 @@ from matplotlib import dates
 from datetime import datetime
 from matplotlib import pyplot as plt
 
-owm=pyowm.OWM('0833f103dc7c2924da06db624f74565c')
+owm=pyowm.OWM('ca58563a751adf230b62342a533c7375')
 mgr=owm.weather_manager()
 
 degree_sign= u'\N{DEGREE SIGN}'
 
-st.title("5 Day Weather Forecast")
-st.write("## Made by Jayvardhan Rathi with ❤️")
+st.title("Análise Climática para os próximos 5 dias")
+st.write("## Tecnologias de Código Aberto da UCMG")
 
-st.write("### Write the name of a City and select the Temperature Unit and Graph Type from the sidebar")
+st.write("### Escreva o nome de uma cidade, selecione a unidade de temperatura e o tipo de gráfico na barra lateral")
 
-place=st.text_input("NAME OF THE CITY :", "")
+place=st.text_input("NOME DA CIDADE :", "")
 
 
 if place == None:
-    st.write("Input a CITY!")
+    st.write("Insira uma CIDADE!")
 
 
 
-unit=st.selectbox("Select Temperature Unit",("Celsius","Fahrenheit"))
+unit=st.selectbox("Selecione a Unidade de Temperatura",("Celsius","Fahrenheit"))
 
-g_type=st.selectbox("Select Graph Type",("Line Graph","Bar Graph"))
+g_type=st.selectbox("Selecione o tipo de gráfico",("Gráfico de Linhas","Gráfico de Barras"))
 
 if unit == 'Celsius':
     unit_c = 'celsius'
