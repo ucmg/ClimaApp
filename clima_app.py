@@ -16,7 +16,7 @@ st.write("## Tecnologias de Código Aberto da UCMG")
 
 st.write("### Escreva o nome de uma cidade, selecione a unidade de temperatura e o tipo de gráfico na barra lateral")
 
-place=st.text_input("NOME DA CIDADE :", "")
+place=st.text_input("Nome da Cidade", "")
 
 
 if place == None:
@@ -24,7 +24,7 @@ if place == None:
 
 
 
-unit=st.selectbox("Selecione a Unidade de Temperatura",("Celsius","Fahrenheit"))
+unit=st.selectbox("Selecione uma Unidade de Temperatura",("Celsius","Fahrenheit"))
 
 g_type=st.selectbox("Selecione o tipo de gráfico",("Gráfico de Linhas","Gráfico de Barras"))
 
@@ -107,7 +107,7 @@ def draw_bar_chart():
     st.pyplot()
     st.title("Temperaturas Máximas e Mínimas")
     for i in range (0,5):
-        st.write("### ",temp_min[i],degree_sign,' --- ',temp_max[i],degree_sign)
+        st.write("#### ",temp_min[i],degree_sign,' --- ',temp_max[i],degree_sign)
 
 def draw_line_chart():
     days, temp_min, temp_max = get_temperature()
@@ -116,27 +116,27 @@ def draw_line_chart():
     st.pyplot()
     st.title("Temperaturas Máximas e Mínimas")
     for i in range (0,5):
-        st.write("### ",temp_min[i],degree_sign,' --- ',temp_max[i],degree_sign)
+        st.write("#### ",temp_min[i],degree_sign,' --- ',temp_max[i],degree_sign)
 
 def other_weather_updates():
     forecaster = mgr.forecast_at_place(place, '3h')
-    st.title("Mudanças de Temperatura Iminentes :")
+    st.title("Mudanças de Temperatura Eminentes")
     if forecaster.will_have_fog():
-        st.write("### Alerta de nevoeiro!")
+        st.write("#### Alerta de nevoeiro 🌫️")
     if forecaster.will_have_rain():
-        st.write("### Alerta de chuva!")
+        st.write("#### Alerta de chuva 🌧️")
     if forecaster.will_have_storm():
-        st.write("### Alerta de tempestade!")
+        st.write("#### Alerta de tempestade 🌩️")
     if forecaster.will_have_snow():
-        st.write("### Alerta de neve!")
+        st.write("#### Alerta de neve ❄️")
     if forecaster.will_have_tornado():
-        st.write("### Alerta de tornado!")
+        st.write("#### Alerta de tornado 🌪️")
     if forecaster.will_have_hurricane():
-        st.write("### Alerta de furacão!")
+        st.write("#### Alerta de furacão 🌀")
     if forecaster.will_have_clouds():
-        st.write("### Céu nublado")    
+        st.write("#### Céu nublado ☁️")    
     if forecaster.will_have_clear():
-        st.write("### Tempo limpo!")
+        st.write("#### Tempo limpo ☀️")
 
 def cloud_and_wind():
     obs=mgr.weather_at_place(place)
@@ -144,18 +144,18 @@ def cloud_and_wind():
     cloud_cov=weather.clouds
     winds=weather.wind()['speed']
     st.title("Cobertura de nuvens e velocidade do vento")
-    st.write('### A cobertura de nuvem atual para',place,'é',cloud_cov,'%')
-    st.write('### A velocidade atual do vento para',place,'é',winds,'mph')
+    st.write('#### A cobertura de nuvem atual para',place,'é',cloud_cov,'%')
+    st.write('#### A velocidade atual do vento para',place,'é',winds,'mph')
 
 def sunrise_and_sunset():
     obs=mgr.weather_at_place(place)
     weather=obs.weather
-    st.title("Horas do nascer e pôr do sol :")
+    st.title("Hora do nascer e pôr do sol")
     Brazil = pytz.timezone("America/Sao_Paulo")
     ss=weather.sunset_time(timeformat='iso')
     sr=weather.sunrise_time(timeformat='iso')  
-    st.write("### Hora do nascer do sol em",place,"é",sr)
-    st.write("### Hora do pôr do sol em",place,"é",ss)
+    st.write("#### Hora do nascer do sol em",place,"é",sr)
+    st.write("#### Hora do pôr do sol em",place,"é",ss)
 
 def updates():
     other_weather_updates()
