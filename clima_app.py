@@ -6,7 +6,7 @@ from matplotlib import dates
 from datetime import datetime
 from matplotlib import pyplot as plt
 
-owm=pyowm.OWM('ca58563a751adf230b62342a533c7375')
+owm=pyowm.OWM('sua_api_OWP')
 mgr=owm.weather_manager()
 
 degree_sign= u'\N{DEGREE SIGN}'
